@@ -9,11 +9,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBAction func showMessage(_ sender: Any) {
+    @IBAction func showMessage(_ sender: UIButton) {
+        
+        let emojiDict = [
+            "👾": "Alien Monster",
+            "😎": "Badass",
+            "👻": "Ghost",
+            "🤖": "iRobot"]
+        var meaning: String? = "Not in the dictionary"
+        let selectedButton = sender
+        
+        if let wordToLookUp = selectedButton.titleLabel?.text {
+            meaning = emojiDict[wordToLookUp]
+        }
         
         let alertController = UIAlertController(
-            title: "Welcome to my first App",
-            message: "Hello World",
+            title: "You chose",
+            message: meaning,
             preferredStyle: UIAlertController.Style.alert)
         
         alertController.addAction(
